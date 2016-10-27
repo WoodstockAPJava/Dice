@@ -26,6 +26,7 @@ public class DiceRoller extends JPanel implements KeyListener, MouseListener
   
    protected void paintComponent(Graphics g)
    {
+      int valueCounter=0;
       Graphics2D g2d = (Graphics2D)g;
       g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       super.paintComponent(g2d);
@@ -33,8 +34,21 @@ public class DiceRoller extends JPanel implements KeyListener, MouseListener
       //
       // START DRAWING CODE
       //
-
-
+      for (int i=10; i<1680; i=i+240){
+         Die unoD = new Die(i,30);
+         unoD.draw(g);
+         valueCounter=valueCounter+unoD.counter();
+      }
+      Die unoD = new Die(10,280);
+      unoD.draw(g);
+      valueCounter=valueCounter+unoD.counter();
+      Die uneD = new Die(250,280);
+      uneD.draw(g);
+      valueCounter=valueCounter+unoD.counter();
+      Color myNewBlack = new Color (0, 0, 0);
+      g.setColor(myNewBlack);
+      g.drawString(Integer.toString(valueCounter), 30, 600);
+      
 
 
       //
