@@ -15,27 +15,34 @@ import javax.swing.Timer;
 
 public class DiceRoller extends JPanel implements KeyListener, MouseListener
 {
-   
+   private Die die1; 
    public DiceRoller()
    {
+      
       setBackground(Color.WHITE);                              // background color
       setBorder(BorderFactory.createLineBorder(Color.BLACK));  // border color
       addKeyListener(this);
       addMouseListener(this);
-   }
+         }
   
    protected void paintComponent(Graphics g)
    {
       Graphics2D g2d = (Graphics2D)g;
       g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       super.paintComponent(g2d);
+      g.setColor (Color.black);
       
       //
       // START DRAWING CODE
-      //
-
-
-
+      int count=0;
+      for (int i=0;i<9;i++){
+         die1=new Die(i*50,200);
+         die1.draw(g);
+         count = count + die1.getValue();
+       
+         }
+      String t = "Count is " + Integer.toString(count) ;
+      g.drawString(t,200, 150); 
 
       //
       // END DRAWING CODE
